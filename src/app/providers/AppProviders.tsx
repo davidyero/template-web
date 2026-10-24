@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { SuperLoaderOverlay } from '@davidyero/ui-web/SuperLoaderOverlay';
 import { SuperToast } from '@davidyero/ui-web/SuperToast';
 import { SuperThemeProvider } from '@davidyero/ui-web/theme';
+import { RouterLink } from '@app/router/RouterLink';
 import { appIcons } from '@app/theme/icons';
 import { appTokens, themeColor } from '@app/theme/tokens';
 import { useThemeMode } from '@app/theme/useThemeMode';
@@ -45,7 +46,13 @@ const DesignSystem = ({ children }: { children: ReactNode }): ReactElement => {
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content', themeColor[mode]);
   }, [mode]);
   return (
-    <SuperThemeProvider tokens={appTokens} mode={mode} labels={labels} icons={appIcons}>
+    <SuperThemeProvider
+      tokens={appTokens}
+      mode={mode}
+      labels={labels}
+      icons={appIcons}
+      LinkComponent={RouterLink}
+    >
       <GlobalStyles />
       {children}
       {/* UNO solo en toda la app: lo gobiernan los interceptores HTTP vía loaderStore. */}
