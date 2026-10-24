@@ -1,0 +1,67 @@
+{
+  "name": "template-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Plantilla web del ecosistema super-davidyero: Vite + React 19 + @davidyero/ui-web.",
+  "scripts": {
+    "init": "node scripts/init.mjs",
+    "dev": "vite",
+    "prebuild": "node scripts/check-i18n.mjs",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -b --noEmit",
+    "lint": "eslint \"src/**/*.{ts,tsx}\" --max-warnings 0",
+    "lint:fix": "eslint --fix \"src/**/*.{ts,tsx}\"",
+    "format": "prettier --write \"**/*.{ts,tsx,js,mjs,json,md,css,html}\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check:i18n": "node scripts/check-i18n.mjs",
+    "check:barrels": "check-barrels src",
+    "prepare": "husky || true"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix --no-warn-ignored --max-warnings 0"
+    ],
+    "*.{json,md,css,html,mjs}": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "@davidyero/ui-web": "github:davidyero/super-davidyero-ui-web#v0.1.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@iconify/react": "^6.0.3",
+    "@tanstack/react-query": "^5.104.5",
+    "axios": "^1.20.0",
+    "i18next": "^26.5.10",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-i18next": "^17.1.8",
+    "react-router-dom": "^7.18.4",
+    "zod": "^3.25.76",
+    "zustand": "^5.0.16"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "~6.6.3",
+    "@testing-library/react": "~16.1.0",
+    "@testing-library/user-event": "~14.5.2",
+    "@types/node": "~22.10.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "~4.3.4",
+    "eslint": "^9.39.5",
+    "eslint-config-davidyero": "github:davidyero/eslint-config-davidyero#v0.1.0",
+    "husky": "~9.1.7",
+    "jsdom": "~25.0.1",
+    "lint-staged": "~15.4.0",
+    "prettier": "~3.4.2",
+    "typescript": "~5.7.3",
+    "vite": "~6.0.7",
+    "vite-plugin-pwa": "~1.3.0",
+    "vitest": "~3.0.2",
+    "workbox-window": "~7.4.1"
+  }
+}
