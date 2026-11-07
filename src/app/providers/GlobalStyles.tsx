@@ -17,7 +17,7 @@ const styles = css`
     margin: 0;
     background: var(--sd-background);
     color: var(--sd-text);
-    font-family: var(--sd-font-family-base);
+    font-family: var(--sd-font-base);
     -webkit-font-smoothing: antialiased;
   }
 `;

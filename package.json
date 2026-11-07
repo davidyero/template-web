@@ -1,6 +1,6 @@
 {
   "name": "template-web",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": true,
   "type": "module",
   "description": "Plantilla web del ecosistema super-davidyero: Vite + React 19 + @davidyero/ui-web.",
