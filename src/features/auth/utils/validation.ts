@@ -18,7 +18,8 @@ export const usernameRule = z
   .min(USERNAME_POLICY.minLength, 'min_length')
   .max(USERNAME_POLICY.maxLength, 'max_length')
   .regex(USERNAME_POLICY.pattern, 'pattern');
-export const emailRule = z.string().trim().min(1, 'required').email('email');
+// `pipe` mantiene el orden de v3: primero se recorta y se exige, después el formato.
+export const emailRule = z.string().trim().min(1, 'required').pipe(z.email('email'));
 export const passwordRule = z
   .string()
   .min(1, 'required')
@@ -43,7 +44,7 @@ export const registerSchema = z
   })
   .refine((v) => v.password === v.passwordConfirmation, {
     path: ['passwordConfirmation'],
-    message: 'mismatch',
+    error: 'mismatch',
   });
 export type RegisterInput = z.infer<typeof registerSchema>;
 

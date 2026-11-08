@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 // ÚNICO lugar donde se lee import.meta.env. El resto de la app importa `env`.
 const schema = z.object({
-  VITE_API_URL: z.string().url(),
+  VITE_API_URL: z.url(),
   VITE_APP_SLUG: z.string().regex(/^[a-z0-9-]+$/),
   VITE_DEFAULT_LOCALE: z.enum(['es', 'en']).default('es'),
 });
