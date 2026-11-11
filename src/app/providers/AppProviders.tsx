@@ -39,6 +39,7 @@ const DesignSystem = ({ children }: { children: ReactNode }): ReactElement => {
       close: t('a11y.close'),
       loading: t('a11y.loading'),
       dismiss: t('a11y.dismiss'),
+      notifications: t('a11y.notifications'),
     }),
     [t],
   );

@@ -13,6 +13,7 @@ export const commonEs = {
   'a11y.close': 'Cerrar',
   'a11y.loading': 'Cargando',
   'a11y.dismiss': 'Descartar',
+  'a11y.notifications': 'Notificaciones',
   sessionExpired: 'Tu sesión terminó. Vuelve a entrar.',
   'crash.title': 'Algo salió mal',
   'crash.body': 'Recarga la página. Si vuelve a pasar, escríbenos.',

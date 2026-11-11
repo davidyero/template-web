@@ -15,6 +15,7 @@ export const commonEn: StringRecord<typeof commonEs> = {
   'a11y.close': 'Close',
   'a11y.loading': 'Loading',
   'a11y.dismiss': 'Dismiss',
+  'a11y.notifications': 'Notifications',
   sessionExpired: 'Your session ended. Please sign in again.',
   'crash.title': 'Something went wrong',
   'crash.body': 'Reload the page. If it happens again, let us know.',

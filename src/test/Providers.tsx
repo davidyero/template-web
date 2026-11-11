@@ -13,6 +13,7 @@ const labels = {
   close: 'Cerrar',
   loading: 'Cargando',
   dismiss: 'Descartar',
+  notifications: 'Notificaciones',
 };
 
 /** Los mismos providers que la app (tema, i18n, router en memoria y TanStack Query). */
