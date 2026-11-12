@@ -8,7 +8,7 @@ import { useSessionStore } from '@app/store/sessionStore';
 import { useErrorMessage } from '@shared/hooks/useErrorMessage';
 import { authApi } from '../../api/authApi';
 import { useRuleMessage } from '../../utils/useRuleMessage';
-import { emailRule } from '../../utils/validation';
+import { emailRule, firstRuleOf } from '../../utils/validation';
 import type { LoginErrors } from './LoginView.types';
 
 export const useLoginView = () => {
@@ -34,11 +34,8 @@ export const useLoginView = () => {
 
   const onSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    const emailCheck = emailRule.safeParse(email);
     const next: LoginErrors = {
-      email: emailCheck.success
-        ? undefined
-        : ruleMessage('email', emailCheck.error.issues[0]?.message),
+      email: ruleMessage('email', firstRuleOf(emailRule, email)),
       password: password ? undefined : ruleMessage('password', 'required'),
     };
     setErrors(next);
