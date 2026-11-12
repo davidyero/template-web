@@ -1,6 +1,6 @@
 {
   "name": "template-web",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "private": true,
   "type": "module",
   "description": "Plantilla web del ecosistema super-davidyero: Vite + React 19 + @davidyero/ui-web.",
@@ -9,6 +9,8 @@
     "dev": "vite",
     "prebuild": "node scripts/check-i18n.mjs",
     "build": "tsc -b && vite build",
+    "prebuild:develop": "node scripts/check-i18n.mjs",
+    "build:develop": "tsc -b && vite build --mode staging",
     "preview": "vite preview",
     "typecheck": "tsc -b --noEmit",
     "lint": "eslint \"src/**/*.{ts,tsx}\" --max-warnings 0",

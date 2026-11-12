@@ -45,6 +45,17 @@ propio y se borra a sí mismo. Si el proyecto ya se inicializó, falla y no toca
 > remoto que crea `gh` va por HTTPS y funciona. Si lo cambias a SSH, invita antes a
 > `SuperGretaBot` como colaboradora.
 
+## Ambientes: dev y prod
+
+| Ambiente | Rama      | URL                         | Variables                                                         |
+| -------- | --------- | --------------------------- | ----------------------------------------------------------------- |
+| Dev      | `develop` | `https://dev.<dominio>`     | `.env.staging` (`npm run build:develop`), sin analítica ni Sentry |
+| Prod     | `main`    | `https://<dominio>` y `www` | `.env.production`                                                 |
+
+Al crear la app: rama `develop` desde el commit inicial, y en Amplify conectar `main` y
+`develop` con sus dominios (Domain management). `feat/*` sale de `develop`, se prueba en dev y
+`develop` pasa a `main` solo cuando David lo confirma.
+
 ## Cambiar el aspecto
 
 Todo está en `src/app/theme/tokens.ts`: colores de claro y oscuro, fuentes, radios y

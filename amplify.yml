@@ -1,5 +1,6 @@
-# AWS Amplify: push a `main` = despliegue. Las VITE_* por rama se definen en la consola de
-# Amplify (Environment variables) y pisan a .env.production.
+# AWS Amplify, dos ambientes: rama `develop` = dev (dev.<dominio>, `.env.staging`, sin analítica
+# ni Sentry) y `main` = prod (`.env.production`). Todo se prueba en dev y pasa a main cuando
+# David lo confirma. Las VITE_* de la consola de Amplify pisan a los .env.
 # Rewrite SPA en la consola: source </^[^.]+$|\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|woff2|ttf|map|json|webmanifest)$)([^.]+$)/>, target /index.html, 200.
 version: 1
 frontend:
@@ -10,7 +11,7 @@ frontend:
         - npm ci
     build:
       commands:
-        - npm run build
+        - if [ "$AWS_BRANCH" = "develop" ]; then npm run build:develop; else npm run build; fi
   artifacts:
     baseDirectory: dist
     files:
