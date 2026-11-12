@@ -7,7 +7,7 @@ import { paths } from '@app/router/paths';
 import { useErrorMessage } from '@shared/hooks/useErrorMessage';
 import { authApi } from '../../api/authApi';
 import { useRuleMessage } from '../../utils/useRuleMessage';
-import { emailRule } from '../../utils/validation';
+import { emailRule, firstRuleOf } from '../../utils/validation';
 import type { ForgotStep } from './ForgotPasswordView.types';
 
 export const useForgotPasswordView = () => {
@@ -32,10 +32,7 @@ export const useForgotPasswordView = () => {
       navigate(paths.reset, { state: { email: email.trim() } });
       return;
     }
-    const check = emailRule.safeParse(email);
-    const message = check.success
-      ? undefined
-      : ruleMessage('email', check.error.issues[0]?.message);
+    const message = ruleMessage('email', firstRuleOf(emailRule, email));
     setError(message);
     if (!message) forgot.mutate();
   };

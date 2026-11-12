@@ -56,6 +56,12 @@ export type RuleField =
   | 'passwordConfirmation'
   | 'code';
 
+/** Primera regla incumplida de un valor suelto contra una regla, o `undefined` si la cumple. */
+export const firstRuleOf = (schema: z.ZodType, value: unknown): string | undefined => {
+  const result = schema.safeParse(value);
+  return result.success ? undefined : result.error.issues[0]?.message;
+};
+
 /** Primera regla incumplida por campo (validación de todo el formulario). */
 export const rulesOf = <T>(
   schema: z.ZodType<T>,
