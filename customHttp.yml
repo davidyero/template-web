@@ -1,0 +1,23 @@
+# Cabeceras HTTP de AWS Amplify: Amplify aplica este fichero (raíz del repo) en
+# cada despliegue.
+#
+# HSTS, nosniff, Referrer-Policy, anti-iframe y una CSP propia de esta app.
+
+customHeaders:
+  # Cabeceras de seguridad en TODAS las rutas. La CSP es la defensa principal
+  # contra el robo del token de sesión (vive en localStorage) por XSS: si la app
+  # empieza a cargar un host nuevo (SDK, API, fuente, iframe), hay que añadirlo aquí.
+  - pattern: '**'
+    headers:
+      - key: 'Strict-Transport-Security'
+        value: 'max-age=31536000; includeSubDomains'
+      - key: 'X-Content-Type-Options'
+        value: 'nosniff'
+      - key: 'Referrer-Policy'
+        value: 'strict-origin-when-cross-origin'
+      - key: 'X-Frame-Options'
+        value: 'DENY'
+      - key: 'Permissions-Policy'
+        value: 'camera=(), microphone=(), geolocation=()'
+      - key: 'Content-Security-Policy'
+        value: "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://super-davidyero-backend.onrender.com https://api.iconify.design https://api2.iconify.design https://api.simplesvg.com https://api.unisvg.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'"

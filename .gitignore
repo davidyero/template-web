@@ -7,3 +7,13 @@ coverage
 .DS_Store
 ._*
 *.log
+
+# Variables de entorno: fuera del repo. Solo se versionan a propósito las que
+# llevan valores públicos (VITE_*, se empaquetan en el cliente) y el .env.example.
+.env
+.env.*
+!.env.example
+!.env.development
+!.env.production
+!.env.staging
+!.env.test
